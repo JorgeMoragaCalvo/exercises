@@ -1,33 +1,31 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
 
-int is_isogram(char *);
+/*
+    Determine if a word or phrase is an isogram.
+    An isogram (also known as a "non-pattern word") is a word or phrase without a repeating letter,
+    however spaces and hyphens are allowed to appear multiple times.
+*/
+
+bool is_isogram(char *);
 
 int main(){
-    char *str = "main-to-us";
-    if(str[4] == "-") printf("Es igual\n");
-    else printf("No es igual\n");
+    char *str = "six-year-old";
 
-    printf("Largo: %d\n", strlen(str));
-    //printf("%d\n", is_isogram(str));
-    
-    //if(is_isogram(str) == 1) printf("Is isogram\n");
-    //else printf("Not isogram\n");
-    printf("Resultado: %d\n", is_isogram(str));
+    if(is_isogram(str)) printf("La palabra o frase ES isogram\n");
+    else printf("La palabra o frase NO es isogram\n");
 
     return 0;
 }
 
-int is_isogram(char *str){
+bool is_isogram(char *str){
     int size = strlen(str);
-    int flag = 1;
-    char a = "-", b = " ";
     while(size > 0){
         for(int i = size - 1; i >= 0; i--){
-            if(str[size] == str[i]) flag = 0;
+            if((str[size] == str[i]) && (str[size] != '-' && str[size] != ' ')) return false;
         }
         size--;
     }
-
-    return flag;
+    return true;
 }

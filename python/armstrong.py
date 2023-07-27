@@ -22,7 +22,6 @@ def isArmstrong(num):
         else: return False
 
 
-
 num = int(input("Enter a number: "))
 if isArmstrong(num):
     print("The number is Armstrong")
@@ -30,4 +29,5 @@ else:
     print("The number is not Armstrong")
     
 
-
+#In VSC Terminal D:\exercises\python> .\armstrong.py
+#In Windows Terminal D:\exercises\python>armstrong.py
