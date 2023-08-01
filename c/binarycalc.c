@@ -6,7 +6,7 @@
 
 #define MAX_BINARY_LENGTH 100
 
-
+/*DRIVE CODE*/
 int main(){
     printf("======================================\n");
     printf("Bienvenido/a a la calculadora binaria\n");
@@ -19,6 +19,7 @@ int main(){
 }
 
 
+/*FUNCIONS*/
 int binary_to_decimal(char str[]){
     int size = strlen(str);
     int sum = 0;
