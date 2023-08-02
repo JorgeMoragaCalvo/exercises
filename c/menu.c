@@ -20,7 +20,6 @@ int main(){
 }
 
 /*FUNCIONS*/
-
 void menu(){
     enum MenuOption option;
     int num, size;

@@ -11,7 +11,6 @@ enum MenuOption {
     EXIT
 };
 
-
 void menu();
 bool is_binary(char *str);
 int binary_to_decimal(char str[]);

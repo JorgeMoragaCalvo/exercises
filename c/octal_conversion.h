@@ -16,5 +16,4 @@ void decimal_to_octal(int num);
 int octal_to_decimal(int num);
 bool is_octal(int num);
 
-
 #endif // OCTAL_CONVERSION_H
