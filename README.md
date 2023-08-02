@@ -1,5 +1,5 @@
 # exercises
-To use the calculator in C program, follow these steps to compile and run the program (write in the command line):  
+To use the calculator in C program, follow these steps to compile and run the program (write in VSCode terminal):  
 Step 1:  
 gcc -c binary_conversion.c -o binary_conversion.o  
 gcc -c octal_conversion.c -o octal_conversion.o  
