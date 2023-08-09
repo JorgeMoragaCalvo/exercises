@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
+#include <ctype.h>
 
 const char BASE_HEX = 16;
 
@@ -24,17 +25,18 @@ bool is_hexa(char);
 
 int main(){
     int num;
-    char *c;
+    char *c = malloc(sizeof(char) * 100);
     printf("Ingrese un numero hexadecimal: ");
     scanf(" %99[^\n]", c);
     int decimal = hexa_to_decimal(c);
-    printf("Decimal: %d", decimal);
+    printf("Equivalente decimal de %s es: %d\n", c, decimal);
     
-    //printf("Ingrese un numero decimal: ");
-    //scanf("%d", &num);
+    printf("Ingrese un numero decimal: ");
+    scanf("%d", &num);
 
-    //printf("Equivalente hexadecimal de %d es: ", num);
-    //decimal_to_hexa(num);
+    printf("Equivalente hexadecimal de %d es: ", num);
+    decimal_to_hexa(num);
+    free(c);
 
     return 0;
 }
@@ -113,21 +115,27 @@ int digits_hexa(char c){
     switch (c)
     {
     case 'A':
+    case 'a':
         digit = 10;
         break;
     case 'B':
+    case 'b':
         digit = 11;
         break;
     case 'C':
+    case 'c':
         digit = 12;
         break;
     case 'D':
+    case 'd':
         digit = 13;
         break;
     case 'E':
+    case 'e':
         digit = 14;
         break;
     case 'F':
+    case 'f':
         digit = 15;
     default:
         break;
