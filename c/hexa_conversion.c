@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
-#include <ctype.h>
 
 const char BASE_HEX = 16;
 
