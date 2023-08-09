@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include <string.h>
+#include <math.h>
 
 const char BASE_HEX = 16;
 
@@ -10,22 +12,29 @@ typedef struct node {
 } hexa_node;
 
 char hexa_digits(int);
+int digits_hexa(char);
 
 void print_hexa(hexa_node *);
 hexa_node *create_new_node(char);
 hexa_node *insert_at_beginning(hexa_node **, hexa_node *);
 void decimal_to_hexa(int);
-int hexa_to_decimal(char);
+int hexa_to_decimal(char *);
 bool is_hexa(char);
 
 
 int main(){
     int num;
-    printf("Ingrese un numero decimal: ");
-    scanf("%d", &num);
+    char *c;
+    printf("Ingrese un numero hexadecimal: ");
+    scanf(" %99[^\n]", c);
+    int decimal = hexa_to_decimal(c);
+    printf("Decimal: %d", decimal);
+    
+    //printf("Ingrese un numero decimal: ");
+    //scanf("%d", &num);
 
-    printf("Equivalente hexadecimal de %d es: ", num);
-    decimal_to_hexa(num);
+    //printf("Equivalente hexadecimal de %d es: ", num);
+    //decimal_to_hexa(num);
 
     return 0;
 }
@@ -96,4 +105,42 @@ void decimal_to_hexa(int num){
         }
     }
     print_hexa(head);
+}
+
+int digits_hexa(char c){
+    int digit = c - '0';
+    if(digit < 10) digit = digit;
+    switch (c)
+    {
+    case 'A':
+        digit = 10;
+        break;
+    case 'B':
+        digit = 11;
+        break;
+    case 'C':
+        digit = 12;
+        break;
+    case 'D':
+        digit = 13;
+        break;
+    case 'E':
+        digit = 14;
+        break;
+    case 'F':
+        digit = 15;
+    default:
+        break;
+    }
+    return digit;
+}
+
+int hexa_to_decimal(char *c){
+    int size = strlen(c);
+    int sum = 0;
+    for(int i = 0; i < size; i++){
+        int num = digits_hexa(c[i]);
+        sum += num * (int)pow(BASE_HEX, (size - (i + 1)));
+    }
+    return sum;
 }
