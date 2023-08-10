@@ -8,8 +8,8 @@ class Estudiante:
         print("Estudiando...")
 
 name = input("Ingrese su nombre: ")
-age = input("Ingrese su edad: ")
-grade = input("Ingrese su grado: ")
+age = int(input("Ingrese su edad: "))
+grade = int(input("Ingrese su grado: "))
 
 estudiante = Estudiante(name, age, grade)
 
@@ -17,4 +17,4 @@ print(estudiante.name)
 
 estudiante.estudiar()
 
-#run in VSCode terminal python file_name.py
+#run in VSCode terminal 'python file_name.py'

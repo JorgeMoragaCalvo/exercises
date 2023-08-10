@@ -93,16 +93,24 @@ void print_hexa(hexa_node *head){
 void decimal_to_hexa(int num){
     hexa_node *head = NULL;
     hexa_node *temp;
-    while(num >= BASE_HEX){
-        int mod = num % BASE_HEX;
-        int c = hexa_digits(mod);
+    int c;
+    if(num < BASE_HEX){
+        c = hexa_digits(num);
         temp = create_new_node(c);
         insert_at_beginning(&head, temp);
-        num = num / BASE_HEX;
-        if(num < BASE_HEX){
-            c = hexa_digits(num);
+    }
+    else{
+        while(num >= BASE_HEX){
+            int mod = num % BASE_HEX;
+            c = hexa_digits(mod);
             temp = create_new_node(c);
             insert_at_beginning(&head, temp);
+            num = num / BASE_HEX;
+            if(num < BASE_HEX){
+                c = hexa_digits(num);
+                temp = create_new_node(c);
+                insert_at_beginning(&head, temp);
+            }
         }
     }
     print_hexa(head);
