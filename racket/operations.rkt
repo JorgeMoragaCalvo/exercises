@@ -44,3 +44,43 @@
                          (if (= (my-remainder x 2) 0)
                              #t
                              #f)))
+
+
+
+(define my-filter (lambda (lst func)
+                    (define filter (lambda (l1 l2 f)
+                                     (if (null? l1)
+                                         (reverse l2)
+                                         (if (f (car l1))
+                                             (filter (cdr l1)(cons (car l1) l2) f)
+                                             (filter (cdr l1) l2 f)))))
+                    (filter lst '() func)))
+
+
+
+
+(define my-map (lambda (lst func)
+                 (define mapping (lambda (l1 f l2)
+                                   (if (null? l1)
+                                       (reverse l2)
+                                       (mapping (cdr l1) f (cons (f (car l1)) l2)))))
+                 (mapping lst func '())))
+
+
+(define my-cube (lambda (x)
+                  (my-pow x 3)))
+
+
+(define my-square (lambda (x)
+                    (my-mult x x)))
+
+
+
+(define major-than-five (lambda (x)
+                          (> x 5)))
+
+
+
+;(my-map (list 1 2 3 4 5 6) my-cube)
+;(my-filter (list 1 2 3 4 5 6 7 8 9 10) major-than-five)
+;(my-filter (list 3 4 5 6 7 8 9 10 11) my-even-number)
