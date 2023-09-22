@@ -2,28 +2,29 @@
 #include <stdlib.h>
 
 
-void plusOne(int *, int, int *);
+int *plusOne(int *, int, int *);
 
 
 int main(){
-    int digits[] = {9};
+    int digits[] = {9,9,9};
     int size = sizeof(digits) / sizeof(digits[0]);
     int returnSize;
 
-    plusOne(digits, size, &returnSize);
+    int *result = plusOne(digits, size, &returnSize);
 
     printf("Result:");
     for (int i = 0; i < returnSize; i++) {
-        printf(" %d", digits[i]);
+        printf(" %d", result[i]);
     }
 
     printf("\nResult size: %d\n", returnSize);
+    free(result);
     
     return 0;
 }
 
 
-void plusOne(int *digits, int digitsSize, int *returnDigits){
+int *plusOne(int *digits, int digitsSize, int *returnDigits){
     int num = 0, count = 0;
     
     for(int i = 0; i < digitsSize; i++){
@@ -39,13 +40,15 @@ void plusOne(int *digits, int digitsSize, int *returnDigits){
     }
 
     int n = 0;
-    //digits = (int *)malloc(count * (sizeof(int)));
+    int *arr = (int *)malloc(count * (sizeof(int)));
 
     for(int i = count - 1; i >= 0; i--){
         n = temp % 10;
-        digits[i] = n;
+        arr[i] = n;
         temp = temp / 10;
     }
 
     *returnDigits = count;
+
+    return arr;
 }
